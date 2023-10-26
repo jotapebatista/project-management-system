@@ -1,31 +1,38 @@
 const AssetRepository = require("../repositories/asset.repository");
+const { logger } = require("../../server");
 
 // Create a new asset
 exports.createAsset = async (projectId, assetData) => {
-  console.log(
-    `Creating asset for project ${projectId} in the service layer with data:`,
-    assetData
-  );
+  logger.info(`Creating asset for project ${projectId} in the service layer with data: ${JSON.stringify(assetData)}`);
 
   try {
     const asset = await AssetRepository.createAsset(projectId, assetData);
-    console.log(
-      `Asset created for project ${projectId} in the service layer:`,
-      asset
-    );
+    logger.info(`Asset created for project ${projectId} in the service layer: ${JSON.stringify(asset)}`);
     return asset;
   } catch (error) {
-    console.error("Error creating asset in the service layer:", error);
+    logger.error(`Error creating asset in the service layer: ${error.message}`);
     throw error;
   }
 };
 
 // Retrieve all assets for a project
 exports.getAllAssets = async (projectId) => {
-  return AssetRepository.getAllAssets(projectId);
+  try {
+    const asset = await AssetRepository.getAllAssets(projectId);
+    return asset;
+  } catch (error) {
+    logger.error(`Error getting all asset in the service layer: ${error.message}`);
+    throw error;
+  }
 };
 
 // Retrieve a single asset by ID
 exports.getAssetById = async (assetId) => {
-  return AssetRepository.getAssetById(assetId);
+  try {
+    const asset = AssetRepository.getAssetById(assetId);
+    return asset;
+  } catch (error) {
+    logger.error(`Error getting asset by ID in the service layer: ${error.message}`);
+    throw error;
+  }
 };

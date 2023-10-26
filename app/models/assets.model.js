@@ -6,6 +6,10 @@ module.exports = (sequelize, Sequelize) => {
     file_path: {
       type: Sequelize.STRING,
     },
+    project_id: {
+      type: Sequelize.INTEGER, 
+      allowNull: false, 
+    },
   });
 
   Assets.associate = (models) => {

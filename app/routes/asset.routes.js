@@ -2,11 +2,14 @@ const express = require("express");
 const router = express.Router();
 const assetController = require("../controllers/asset.controller");
 const checkUserRole = require("../middleware/checkUserRole");
+const multer = require('multer');
+const upload = multer({dest: "uploads/"});
 
 // Create a new asset for a project
 router.post(
   "/:projectId/assets",
   checkUserRole(["admin"]),
+  upload.single("file"),
   assetController.create
 );
 

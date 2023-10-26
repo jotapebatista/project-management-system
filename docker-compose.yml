@@ -23,15 +23,26 @@ services:
   minio:
     image: minio/minio
     container_name: minio-container
-    command: server /data
+    command: server /data --console-address ":9001"
     environment:
       MINIO_ACCESS_KEY: adminkey
       MINIO_SECRET_KEY: admin_key
     ports:
       - "9000:9000"
+      - "9001:9001"
     volumes:
       - minio-data:/data
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins-container
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins-data:/var/jenkins_home
 
 volumes:
   mysql-data:
   minio-data:
+  jenkins-data:

@@ -4,7 +4,6 @@ const ProjectRepository = require("../repositories/project.repository");
 
 // Create a new project
 exports.createProject = async (projectData) => {
-  console.log(projectData)
   return ProjectRepository.createProject(projectData);
 };
 
