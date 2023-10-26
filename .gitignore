@@ -1,0 +1,50 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Dependency directories
+**/bower_components
+**/jspm_packages
+**/node_modules/
+**/public/vendor/
+
+# WebStorm workspace
+.idea/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# User-specific files
+npm-debug.log
+yarn-error.log
+*.log
+.pids
+*.seed
+*.pid.lock
+*.log.*
+*.cert
+*.tmp
+
+# Debugging
+node-inspect/
+devtools/
+
+# Project specific
+build/
+dist/
+tmp/
+*.tsbuildinfo
+
+# Local development
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
